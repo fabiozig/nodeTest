@@ -13,12 +13,17 @@ pool:
 
 steps:
 - script: |
+    aws configure set aws_access_key_id $(AWS-ACCESS-KEY-ID)
+    aws configure set aws_secret_access_key $(AWS-SECRET-ACCESS-KEY)
+    aws configure set region ap-northeast-1
+  displayName: "Configure AWS"
+
+- script: |
     npm install
     npm run compile
     npm run lint
-    npm run test
   displayName: 'npm install and build'
 
-# - script: |
-#     npm run test
-#   displayName: 'run tests'
+- script: |
+    npm run test
+  displayName: 'run tests'
