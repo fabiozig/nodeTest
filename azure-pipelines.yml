@@ -19,6 +19,7 @@ steps:
   displayName: "Configure AWS"
 
 - script: |
+    npm run prepare
     npm install
     npm run compile
     npm run lint
